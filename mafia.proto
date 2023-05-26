@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+service MafiaServer {
+  rpc GetRoomId (request_room_id) returns (reply_room_id) {}
+  rpc SetUserName (request_to_join) returns (reply_bool) {}
+  rpc InformThatGameHasStarted(has_game_started) returns (reply_bool) {}
+  rpc GetUpdatesOnGameProcessFromServer(request_updates) returns (stream reply_event) {}
+  rpc PrescribeRole(request_to_get_role) returns (reply_str) {}
+  rpc InformThatUserHasLeft(request_to_leave) returns (empty_reply) {}
+  rpc StartDay(request_to_start_day) returns (reply_int) {}
+  rpc WantToEndDay(request_to_end_day) returns (reply_int) {}
+  rpc GetAliveUserNames(request_to_get_alive_users) returns (reply_str) {}
+  rpc KillPerson(request_to_kill) returns (reply_bool) {}
+  rpc WantToEndNight(request_to_end_night) returns (reply_int) {}
+  rpc StartNight(request_to_start_night) returns (reply_int) {}
+  rpc CheckPerson(request_to_check) returns (reply_check) {}
+  rpc RevealThatPersonIsMafia(request_to_publish) returns (reply_bool) {}
+  rpc ExecutePlayer(request_to_execute) returns (response_to_execute) {}
+  rpc CheckIfGameIsFinished(check_if_game_is_finished_request) returns (check_if_game_is_finished_reply) {}
+}
+
+message request_room_id {}
+
+message reply_room_id {
+  int32 room_id = 1;
+}
+
+message reply_all {
+  string str = 1;
+}
+
+message request_to_join {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_get_role {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message reply_str {
+  string str = 1;
+}
+
+message reply_bool {
+  bool ans_bool = 1;
+}
+
+message has_game_started {
+  int32 room_id = 1;
+}
+
+message empty_reply {}
+
+message empty_request {}
+
+message reply_event {
+  int32 event_type = 1;
+  string message = 2;
+}
+
+message request_updates {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_leave {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_start_day {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message reply_int {
+  int32 int = 1;
+}
+
+message request_to_end_day {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_get_alive_users {
+  int32 room_id = 1;
+}
+
+message request_to_kill {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_end_night {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_start_night {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_check {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message reply_check {
+  bool validity = 1;
+  bool ans = 2;
+}
+
+message request_to_publish {
+  string name = 1;
+  int32 room_id = 2;
+}
+
+message request_to_execute {
+  string name = 1;
+  int32 room_id = 2;
+  bool is_ghost = 3;
+}
+
+message response_to_execute {
+  bool validity = 1;
+  string name_of_executed = 2;
+}
+
+message check_if_game_is_finished_request {
+  int32 room_id = 1;
+}
+
+message check_if_game_is_finished_reply {
+  bool ans_bool = 1;
+  string ans_str = 2;
+}
