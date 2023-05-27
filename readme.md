@@ -3,7 +3,7 @@
 Сетевой вариант игры "Мафия". Взаимодействие между клиентом и сервером обеспечивается с помощью gRPC.
 В одном сеансе игры – 4 игрока: мафия, комиссар, два мирных жителя.
 
-**Условия для победы мирных жителей: мафия была убита.**
+**Условия для победы мирных жителей: мафии не стало.**
 
 **Условия для победы мафии: игроков-мафий не меньше, чем игроков, 
 которые не являются мафией.**
@@ -18,9 +18,14 @@
 Иначе надо заменить python3 на python.
 
 ### Команды для запуска
-1.  ```cd kopylov-mafia```
-2. ```python3 -m pip install --upgrade pip && virtualenv venv```
-3Запуск сервера: ```(venv) kopylov-mafia %python -m pip install --upgrade pip && python3 
--m pip install grpcio && python3 server.py```
-или запуск клиента: ```(venv) kopylov-mafia %python -m pip install --upgrade pip && python3 
--m pip install grpcio && python3 client.py```
+0. [ВЫПОЛНЯТЬ ТОЛЬКО ОДИН РАЗ] `git clone git@github.com:Oleg13Kopylov/mafia.git` ИЛИ 
+`git clone https://github.com/Oleg13Kopylov/mafia.git`
+1.  ```cd mafia```
+2. Открываем один терминал для сервера и запускаем:
+3. `python3 -m pip install --upgrade pip && virtualenv venv && source venv/bin/activate`
+[Здесь может понадобиться выполнить еще одну команду, если система попросит её выполнить:]
+`sudo apt install python3-virtualenv`
+4. `(venv)$ python -m pip install --upgrade pip && python -m pip install grpcio && python -m pip install grpcio-tools`
+5. `python server.py`
+6. Открываем 4 терминала для клиентов и в каждом из них в директории mafia:
+7. `source venv/bin/activate && python client.py`
