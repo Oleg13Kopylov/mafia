@@ -19,7 +19,7 @@
 Будет выдано сообщение о том, что Вы отключились от игры.
 
 
-## Как запускать
+## Способ 1. Как запускать с помощью virtualenv
 Открыть пять окон в терминале. В одном окне нужно запустить сервер,
 в остальных четырех – клиентов. Как это сделать – описано в разделе _Команды для запуска_.
 
@@ -39,6 +39,19 @@
 5. `python server.py`
 6. Открываем 4 терминала для клиентов и в каждом из них в директории mafia:
 7. `source venv/bin/activate && python client.py`
+
+
+## Способ 2. Как запускать с помощью Docker
+0. [ВЫПОЛНЯТЬ ТОЛЬКО ОДИН РАЗ] `git clone git@github.com:Oleg13Kopylov/mafia.git` ИЛИ 
+`git clone https://github.com/Oleg13Kopylov/mafia.git`
+1.  ```cd mafia```
+2. [Убедитесь, что перед выполнением последующих команд у Вас запущен Docker] Открываем один терминал для сервера и запускаем:
+3. `sudo docker build -f Dockerfile.server . -t server`
+4. `docker run -ti --network host server`
+4. Открываем 4 терминала для клиентов и в каждом из них в директории mafia:
+5. `sudo docker build -f Dockerfile.client . -t client`
+6. `docker run -ti --network host client`
+
 
 
 ### Скриншоты с примером работы приложения:

@@ -1,0 +1,6 @@
+FROM python:latest
+WORKDIR /application
+COPY . .
+RUN ["pip", "install" , "--no-cache-dir", "-r", "requirements.txt"]
+CMD ["python", "client.py"]
+EXPOSE 12345:12345/udp
