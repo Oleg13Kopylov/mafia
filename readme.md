@@ -46,10 +46,10 @@
 `git clone https://github.com/Oleg13Kopylov/mafia.git`
 1.  ```cd mafia```
 2. [Убедитесь, что перед выполнением последующих команд у Вас запущен Docker] Открываем один терминал для сервера и запускаем:
-3. `sudo docker build -f Dockerfile.server . -t server`
+3. [ДОСТАТОЧНО ВЫПОЛНИТЬ ОДИН РАЗ] `sudo docker build -f Dockerfile.server . -t server`
 4. `docker run -ti --network host server`
 4. Открываем 4 терминала для клиентов и в каждом из них в директории mafia:
-5. `sudo docker build -f Dockerfile.client . -t client`
+5. [ДОСТАТОЧНО ВЫПОЛНИТЬ ОДИН РАЗ, в первом терминале] `sudo docker build -f Dockerfile.client . -t client`
 6. `docker run -ti --network host client`
 
 
